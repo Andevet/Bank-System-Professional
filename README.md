@@ -1,28 +1,36 @@
-# Bank-System-SOLID | Advanced Software Architecture
+# Bank Management System - SOLID & Design Patterns
 
-## Overview
-This project is an advanced refactoring of the Bank Management System, completed during the **Advanced Object-Oriented Programming** course. The focus was shifted from basic functionality to high-level software engineering, emphasizing **SOLID principles** and **Design Patterns** to create a decoupled and professional architecture.
+A comprehensive Java-based banking system redesigned with a focus on **Software Architecture**, **SOLID Principles**, and **Design Patterns** to ensure scalability, maintainability, and clean code practices.
 
-## Key Engineering Enhancements
+## 🚀 Key Architectural Improvements
 
-### 1. SOLID Implementation
-- **Single Responsibility (SRP):** Completely separated system logic by introducing dedicated **Facades**:
-    - `AccountFacade`: Manages account lifecycles.
-    - `ReportFacade`: Handles complex data queries and statistics.
-    - `CalculationFacade`: Responsible for financial algorithms.
-- **Dependency Inversion (DIP):** Modules now depend on abstractions rather than concrete implementations.
+### 🏗️ SOLID Principles Implementation
+* **Single Responsibility:** Decoupled business logic, data management, and user interaction into specialized modules.
+* **Open/Closed:** The system is easily extendable for new account types (e.g., Investment accounts) without modifying existing core logic.
+* **Interface Segregation:** Used specific interfaces like `Profitable`, `Vipable`, and `ManagementFees` to ensure classes only implement necessary methods.
 
-### 2. Advanced Design Patterns
-- **Memento Pattern:** Implemented a robust "Save & Restore" mechanism for the bank's internal collections (`ArrayList`), allowing the system to revert to previous states safely.
-- **Observer Pattern:** Integrated a real-time notification system. Specific system events trigger updates to multiple observers (e.g., `Action1`, `Action2`).
-- **Iterator & ListIterator:** Developed custom iterators for safe and efficient collection traversal, including reverse-order printing and specialized data manipulation.
+### 🧩 Design Patterns Applied
 
-### 3. Data Structures & Generics
-- Extensive use of **Java Generics** for type-safety.
-- Specialized use of `TreeSet` with custom **Comparators** to handle automated sorting and avoid data duplication based on specific business rules.
+* **Facade Pattern:** Simplified system complexity by implementing dedicated Facades:
+    * `AccountFacade`: Manages account lifecycle and client operations.
+    * `ReportFacade`: Handles statistics and data visualization.
+    * `CalculationFacade`: Centralizes financial algorithms and profit calculations.
+* **Observer Pattern:** Integrated a real-time notification system. The `BankObserver` (Subject) triggers updates to multiple observers (`Action1`, `Action2`) upon critical system events.
+* **Singleton Pattern:** The `Bank` class is implemented as a thread-safe Singleton to ensure global access and data consistency across the application.
+* **Factory Pattern:** Centralized object instantiation through `AccountsFactory`, allowing for dynamic creation of diverse account types (Checking, Savings, Mortgage) while maintaining loose coupling.
+* **Iterator & ListIterator:** Developed custom `CustomIterator` and `CustomListIterator` implementations for safe, encapsulated traversal of financial data collections.
 
-## Technical Skills Demonstrated
-- Advanced Java Development
-- Software Architecture & Refactoring
-- GoF Design Patterns
-- Clean Code Practices (SOLID)
+## 🛠️ Technical Stack & Features
+* **Language:** Java (JDK 11+)
+* **Data Integrity:** Custom Exception Handling for financial transaction safety.
+* **Generics & Collections:** Advanced use of Java Collections and Generics for type-safe data structures.
+* **Automation:** Built-in automated data generation for system testing and demonstration.
+
+## 📂 Project Structure
+```text
+src/
+├── main/                 # Core logic, Facades, and Models
+├── interfaces/           # Abstractions and Segregated Interfaces
+├── bankManagement/       # Observer logic and Bank Singleton
+├── bankException/        # Custom business logic exceptions
+└── bankEnum/             # System-wide constants and types
